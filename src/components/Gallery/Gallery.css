@@ -1,0 +1,43 @@
+.masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -5px; /* gutter size offset */
+  width: auto;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  height: 600px;
+}
+.masonry-grid_column {
+  padding-left: 5px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.masonry-grid_column > div {
+  /* change div to reference your elements you put in <Masonry> */
+  background: grey;
+  margin-bottom: 5px;
+}
+
+/* Optional, different gutter size on mobile */
+@media (max-width: 800px) {
+  .masonry-grid {
+    margin-left: -5px; /* gutter size offset */
+    height: 300x;
+  }
+  .masonry-grid_column {
+    padding-left: 5px; /* gutter size offset */
+  }
+  .masonry-grid_column > div {
+    margin-bottom: 5px; /* space between items */
+  }
+}
+
+/***
+Carousel
+**/
+
+.carousel-item {
+  padding: 10px;
+}
