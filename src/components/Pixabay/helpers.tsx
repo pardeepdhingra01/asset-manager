@@ -6,20 +6,23 @@ const { Option } = Select;
 export const renderOptions = ({
   defaultSelectedOption,
   options,
-  handleSearch,
+  handleImageType,
   style,
 }: RenderOptionParams) => (
-  <Select
-    defaultValue={defaultSelectedOption}
-    style={style}
-    onChange={(option) => handleSearch(option)}
-  >
-    {options.map(({ label, value }) => (
-      <Option key={value} value={value}>
-        {label}
-      </Option>
-    ))}
-  </Select>
+  <div style={{ width: '100%', paddingBottom: 10 }}>
+    <label>Image Type: </label>
+    <Select
+      defaultValue={defaultSelectedOption}
+      style={style}
+      onChange={(option) => handleImageType(option)}
+    >
+      {options.map(({ label, value }) => (
+        <Option key={value} value={value}>
+          {label}
+        </Option>
+      ))}
+    </Select>
+  </div>
 );
 
 export const createPlaceholder = ({

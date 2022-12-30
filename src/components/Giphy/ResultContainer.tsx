@@ -2,7 +2,7 @@ import React, { ElementType, useState } from 'react';
 import { GiphyFetch } from '@giphy/js-fetch-api';
 import ResizeObserver from 'react-resize-observer';
 import { Carousel, Grid } from '@giphy/react-components';
-import { GalleryType } from '../Gallery/types';
+import { GalleryType } from '../Pixabay/Components/Gallery/types';
 
 const giphyFetch = new GiphyFetch('sXpGFDGZs0Dv1mmNFvYaGUvYwKX0PWIh');
 
@@ -10,12 +10,12 @@ const ResultContainer = ({
   trending,
   searchTerm,
   searchResultViewType,
-  loader
+  loader,
 }: {
   trending: boolean;
   searchTerm: string;
   searchResultViewType: GalleryType;
-  loader: ElementType
+  loader: ElementType;
 }) => {
   const [width, setWidth] = useState(window.innerWidth);
   const fetchGifs = (offset: number) =>

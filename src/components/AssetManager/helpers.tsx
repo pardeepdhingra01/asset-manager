@@ -33,7 +33,7 @@ export function generateTabs({ isUpload, isGiphy, isPixabay }: Params) {
       label: 'Pixabay',
       tab: 'Pixabay',
       key: 'PIXABAY',
-      children: <Pixabay />,
+      children: <Pixabay searchResultView="Masonry" />,
     });
   }
 

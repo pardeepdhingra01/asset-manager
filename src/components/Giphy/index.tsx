@@ -11,7 +11,7 @@ export const Giphy = ({
   searchResultViewType = defaultSearchViewType,
   defaultSearch = '',
   trending = false,
-  loader = Loader
+  loader = Loader,
 }: GiphyProps) => {
   const [searchTerm, setSearchTerm] = useState(defaultSearch);
 

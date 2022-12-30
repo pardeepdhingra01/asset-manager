@@ -11,22 +11,24 @@ export const Form = ({
   defaultSelectedOption,
   optionsStyle,
   handleSearch,
+  handleImageType,
 }: FormParams) => (
-  <Input.Group compact>
-    <Input
-      allowClear
-      defaultValue={defaultSearch}
-      placeholder={placeholderValue}
-      style={inputStyle}
-    />
-    <>
-      {showOptions &&
-        renderOptions({
-          options,
-          defaultSelectedOption,
-          style: optionsStyle,
-          handleSearch,
-        })}
-    </>
-  </Input.Group>
+  <>
+    {showOptions &&
+      renderOptions({
+        options,
+        defaultSelectedOption,
+        style: optionsStyle,
+        handleImageType,
+      })}
+    <Input.Group compact>
+      <Input.Search
+        allowClear
+        defaultValue={defaultSearch}
+        placeholder={placeholderValue}
+        style={inputStyle}
+        onSearch={handleSearch}
+      />
+    </Input.Group>
+  </>
 );

@@ -5,15 +5,19 @@ export const defaultOptions = [
   },
   {
     label: 'Photos',
-    value: 'photos',
+    value: 'photo',
   },
   {
     label: 'Illustrations',
-    value: 'illustrations',
+    value: 'illustration',
   },
   {
     label: 'Vectors',
-    value: 'vectors',
+    value: 'vector',
+  },
+  {
+    label: 'GIFs',
+    value: 'gifs',
   },
 ];
 
@@ -30,3 +34,5 @@ export const defaultOptionsStyle = {
 };
 
 export const defaultSearchViewType = 'Masonry';
+
+export const defaultPerPage = 25;
