@@ -1,5 +1,5 @@
 import { ElementType } from 'react';
-import { GalleryType } from '../Pixabay/Components/Gallery/types';
+import { GalleryType } from '../Gallery/types';
 
 export interface GiphyProps {
   trending?: boolean;

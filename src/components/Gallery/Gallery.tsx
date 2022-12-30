@@ -17,7 +17,7 @@ const Gallery = ({ type, next, images, hasMore, loader }: GalleryProps) => {
     images.map((image) => (
       <Image
         placeholder
-        src={image.webformatURL && image.webformatURL}
+        src={image.imageURL && image.imageURL}
         alt={image.id}
         key={image.id}
         preview={false}

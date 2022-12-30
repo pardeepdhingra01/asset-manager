@@ -14,8 +14,9 @@ import {
   defaultPerPage,
 } from './defaults';
 import { search } from './services';
-import Gallery from './Components/Gallery';
+import Gallery from '../Gallery';
 import { Loader } from '@giphy/react-components';
+import { GalleryImage } from '../Gallery/types';
 
 export const Pixabay = ({
   showOptions = true,
@@ -33,7 +34,7 @@ export const Pixabay = ({
   const [type, setType] = useState<string>(defaultSelectedOption);
   const [searchTerm, setSearchTerm] = useState(defaultSearch);
   const [page, setPage] = useState(1);
-  const [hits, setHits] = useState<Hit[]>([]);
+  const [images, setImages] = useState<GalleryImage[]>([]);
   const [pages, setPages] = useState(0);
   const [placeholderValue, setPlaceholderValue] = useState<string>(
     createPlaceholder({
@@ -57,12 +58,13 @@ export const Pixabay = ({
 
   const handleSearch = (st: string) => {
     setSearchTerm(st);
-    setHits([]);
+    setImages([]);
     search(st, { type, page, per_page: perPage })
       .then((response) => response.json())
       .then((result: ResultType) => {
-        setPages(result.totalHits / perPage);
-        setHits(result.hits);
+        setPages(Math.ceil((result.totalHits ?? 1) / perPage));
+        const images = result.hits.map((hit) => ({ id: hit.id, imageURL: hit.webformatURL}));
+        setImages(images);
       });
   };
 
@@ -71,13 +73,14 @@ export const Pixabay = ({
   }, [defaultSearch]);
 
   const next = () => {
-    if (page<pages) {
+    if (page < pages) {
       const nextPage = page + 1;
       setPage(nextPage);
       search(searchTerm, { type, page: nextPage, per_page: perPage })
         .then((response) => response.json())
         .then((result: ResultType) => {
-          setHits((hits) => hits.concat(result.hits));
+          const newiImages = result.hits.map((hit) => ({ id: hit.id, imageURL: hit.webformatURL}));
+          setImages((images) => images.concat(newiImages));
         });
     }
   }
@@ -95,7 +98,7 @@ export const Pixabay = ({
         handleSearchType={handleSearchType}
       />
       <Gallery 
-        images={hits} 
+        images={images} 
         hasMore={page !== pages}
         type={searchResultView} 
         loader={loader} 

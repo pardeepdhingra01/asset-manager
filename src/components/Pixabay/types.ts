@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { GalleryType } from './Components/Gallery/types';
+import { GalleryType } from '../Gallery/types';
 
 export type PlaceholderType = 'static' | 'auto' | 'hybrid';
 
