@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
       <Button onClick={() => setOpen(true)}>Open</Button>
-      <AssetManager open={open} />
+      <AssetManager open={open} onCancel={() => setOpen(false)}/>
     </>
   );
 };

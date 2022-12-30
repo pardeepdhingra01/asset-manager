@@ -15,6 +15,7 @@ import {
 } from './defaults';
 import { search } from './services';
 import Gallery from './Components/Gallery';
+import { Loader } from '@giphy/react-components';
 
 export const Pixabay = ({
   showOptions = true,
@@ -27,15 +28,13 @@ export const Pixabay = ({
   placeholder = defaultPlaceholder,
   searchResultView = defaultSearchViewType,
   perPage = defaultPerPage,
-  loader = <>Loading...</>,
+  loader = <Loader/>
 }: PixabayProps) => {
-  const [imageType, setImageType] = useState<string | null>(
-    showOptions ? defaultSelectedOption : null,
-  );
+  const [type, setType] = useState<string>(defaultSelectedOption);
   const [searchTerm, setSearchTerm] = useState(defaultSearch);
   const [page, setPage] = useState(1);
   const [hits, setHits] = useState<Hit[]>([]);
-  const [totalImages, setTotalImages] = useState(0);
+  const [pages, setPages] = useState(0);
   const [placeholderValue, setPlaceholderValue] = useState<string>(
     createPlaceholder({
       placeholder,
@@ -45,7 +44,7 @@ export const Pixabay = ({
     }),
   );
 
-  const handleImageType = (selectedOption: string) => {
+  const handleSearchType = (selectedOption: string) => {
     const placeholderValue = createPlaceholder({
       placeholder,
       placeholderText,
@@ -53,16 +52,16 @@ export const Pixabay = ({
       options,
     });
     setPlaceholderValue(placeholderValue);
-    setImageType(selectedOption);
+    setType(selectedOption);
   };
 
   const handleSearch = (st: string) => {
     setSearchTerm(st);
     setHits([]);
-    search(st, { image_type: imageType, page, per_page: perPage })
+    search(st, { type, page, per_page: perPage })
       .then((response) => response.json())
       .then((result: ResultType) => {
-        setTotalImages(result.totalHits);
+        setPages(result.totalHits / perPage);
         setHits(result.hits);
       });
   };
@@ -72,37 +71,36 @@ export const Pixabay = ({
   }, [defaultSearch]);
 
   const next = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
-    search(searchTerm, { image_type: imageType, page: nextPage, per_page: perPage })
-      .then((response) => response.json())
-      .then((result: ResultType) => {
-        setTotalImages(result.totalHits);
-        setHits((hits) => hits.concat(result.hits));
-      });
+    if (page<pages) {
+      const nextPage = page + 1;
+      setPage(nextPage);
+      search(searchTerm, { type, page: nextPage, per_page: perPage })
+        .then((response) => response.json())
+        .then((result: ResultType) => {
+          setHits((hits) => hits.concat(result.hits));
+        });
+    }
   }
   return (
     <>
       <Form
         defaultSearch={defaultSearch}
         placeholderValue={placeholderValue}
-        inputStyle={inputStyle}
         showOptions={showOptions}
         options={options}
         defaultSelectedOption={defaultSelectedOption}
+        inputStyle={inputStyle}
         optionsStyle={optionsStyle}
         handleSearch={handleSearch}
-        handleImageType={handleImageType}
+        handleSearchType={handleSearchType}
       />
-      <div style={{ marginTop: 20 }}>
-        <Gallery 
-          images={hits} 
-          total={totalImages}
-          type={searchResultView} 
-          loader={loader} 
-          next={next} 
-        />
-      </div>
+      <Gallery 
+        images={hits} 
+        hasMore={page !== pages}
+        type={searchResultView} 
+        loader={loader} 
+        next={next} 
+      />
     </>
   );
 };

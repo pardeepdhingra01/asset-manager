@@ -15,10 +15,6 @@ export const defaultOptions = [
     label: 'Vectors',
     value: 'vector',
   },
-  {
-    label: 'GIFs',
-    value: 'gifs',
-  },
 ];
 
 export const defaultOption = 'all';
@@ -30,9 +26,10 @@ export const defaultInputStyle = {
 };
 
 export const defaultOptionsStyle = {
-  width: '30%',
+  width: '29%',
+  marginRight: '1%'
 };
 
 export const defaultSearchViewType = 'Masonry';
 
-export const defaultPerPage = 25;
+export const defaultPerPage = 20;

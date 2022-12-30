@@ -11,17 +11,17 @@ export const Form = ({
   defaultSelectedOption,
   optionsStyle,
   handleSearch,
-  handleImageType,
+  handleSearchType,
 }: FormParams) => (
   <>
-    {showOptions &&
+    <Input.Group>
+      {showOptions &&
       renderOptions({
         options,
         defaultSelectedOption,
         style: optionsStyle,
-        handleImageType,
+        handleSearchType,
       })}
-    <Input.Group compact>
       <Input.Search
         allowClear
         defaultValue={defaultSearch}

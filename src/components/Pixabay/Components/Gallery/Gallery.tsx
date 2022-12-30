@@ -1,4 +1,4 @@
-import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from 'react-infinite-scroller';
 import Masonry from 'react-masonry-css';
 import { Image } from 'antd';
 import { GalleryProps } from './types';
@@ -11,31 +11,41 @@ const breakpointColumnsObj = {
   500: 1,
 };
 
-const Gallery = ({ type, next, images, total, loader }: GalleryProps) => {
+const Gallery = ({ type, next, images, hasMore, loader }: GalleryProps) => {
+  let scrollParentRef: HTMLElement | null = null;
   const childElements =
     images.map((image) => (
       <Image
+        placeholder
         src={image.webformatURL && image.webformatURL}
         alt={image.id}
         key={image.id}
+        preview={false}
+        onClick={(e) => {
+          console.log('image', image);
+          e.preventDefault();
+        }}
       />
     ));
 
   return (
-    <InfiniteScroll
-      dataLength={total}
-      loader={loader}
-      next={next}
-      hasMore
-    >
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="masonry-grid"
-        columnClassName="masonry-grid_column"
+    <div className='gallery-container' ref={(ref) => scrollParentRef = ref}>
+      <InfiniteScroll
+        pageStart={0}
+        loadMore={next}
+        initialLoad
+        hasMore={hasMore}
+        loader={loader}
       >
-        {childElements}
-      </Masonry>
-    </InfiniteScroll>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="masonry-grid"
+          columnClassName="masonry-grid_column"
+        >
+          {childElements}
+        </Masonry>
+      </InfiniteScroll>
+    </div>
   );
 };
 

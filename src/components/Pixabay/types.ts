@@ -19,14 +19,14 @@ export interface PixabayProps {
   optionsStyle?: Record<string, string | number>;
   defaultSelectedOption?: string;
   searchResultView?: GalleryType;
-  loader?: ReactNode;
+  loader?: JSX.Element;
   perPage?: number;
 }
 
 export interface RenderOptionParams {
   options: IOption[];
   defaultSelectedOption?: string;
-  handleImageType: (option: string) => void;
+  handleSearchType: (option: string) => void;
   style?: Record<string, string | number>;
 }
 
@@ -39,7 +39,7 @@ export interface FormParams {
   optionsStyle?: Record<string, string | number>;
   defaultSelectedOption?: string;
   handleSearch: (q: string) => void;
-  handleImageType: (option: string) => void | null;
+  handleSearchType: (option: string) => void | null;
 }
 
 export type Hit = {
@@ -64,6 +64,9 @@ export type Hit = {
   user_id: number;
   user: string;
   userImageURL: string;
+  fullHDURL?: string;
+  imageURL?: string;
+  vectorURL?: string;
 };
 export interface ResultType {
   total: number;
