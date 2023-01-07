@@ -33,6 +33,7 @@ export const AssetManager = ({
       onOk={onOk}
       confirmLoading={confirmLoading}
       onCancel={onCancel}
+      footer={null}
     >
       <Tabs defaultActiveKey={defaultTab} items={items} />
     </Modal>

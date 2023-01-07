@@ -1,4 +1,4 @@
-import { UploadContainer } from '../Upload';
+import Upload from '../Upload';
 import { Giphy } from '../Giphy';
 import { Pixabay } from '../Pixabay';
 
@@ -15,7 +15,7 @@ export function generateTabs({ isUpload, isGiphy, isPixabay }: Params) {
       label: 'Upload',
       tab: 'Upload',
       key: 'UPLOAD',
-      children: <UploadContainer />,
+      children: <Upload />,
     });
   }
 

@@ -1,4 +1,4 @@
-export const defaultActiveTab = 'PIXABAY';
+export const defaultActiveTab = 'UPLOAD';
 export const defaultConfirmLoading = false;
 export const defaultIsUpload = true;
 export const defaultIsPixabay = true;

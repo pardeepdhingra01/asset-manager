@@ -1,8 +1,11 @@
 export type GalleryType = 'Masonry' | 'Carousel';
 
 export type GalleryImage = {
-    id: string;
-    imageURL: string;
+    id: string | number;
+    imageURL?: string;
+    alt?: string;
+    status?: string;
+    percent?: number;
 }
 export interface GalleryProps {
     type: GalleryType;

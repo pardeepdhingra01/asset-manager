@@ -18,7 +18,7 @@ const Gallery = ({ type, next, images, hasMore, loader }: GalleryProps) => {
       <Image
         placeholder
         src={image.imageURL && image.imageURL}
-        alt={image.id}
+        alt={`${image.alt ?? image.id}`}
         key={image.id}
         preview={false}
         onClick={(e) => {
