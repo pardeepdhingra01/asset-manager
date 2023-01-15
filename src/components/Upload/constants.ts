@@ -25,5 +25,29 @@ export const defaultImages = [
         name: 'image.png',
         status: 'done' as UploadFileStatus,
         url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    }, {
+        uid: '5',
+        name: 'image.png',
+        status: 'done' as UploadFileStatus,
+        size: 300,
+        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    },
+    {
+        uid: '6',
+        name: 'image.png',
+        status: 'done' as UploadFileStatus,
+        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    },
+    {
+        uid: '7',
+        name: 'image.png',
+        status: 'done' as UploadFileStatus,
+        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    },
+    {
+        uid: '8',
+        name: 'image.png',
+        status: 'done' as UploadFileStatus,
+        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
     },
 ]

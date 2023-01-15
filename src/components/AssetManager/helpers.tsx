@@ -15,7 +15,7 @@ export function generateTabs({ isUpload, isGiphy, isPixabay }: Params) {
       label: 'Upload',
       tab: 'Upload',
       key: 'UPLOAD',
-      children: <Upload />,
+      children: <Upload showCrop={false} showPreview={false} enableDelete={false} />,
     });
   }
 

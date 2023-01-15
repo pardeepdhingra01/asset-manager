@@ -1,3 +1,15 @@
+.ant-upload {
+    max-height: 225px;
+}
+.ant-upload-list.ant-upload-list-picture-card {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.ant-upload-list.ant-upload-list-picture {
+    max-height: 225px;
+    overflow-y: scroll;
+}
 .ant-upload-wrapper.ant-upload-picture-card-wrapper .ant-upload-list.ant-upload-list-picture-card .ant-upload-list-item-container {
     height: 225px;
     width: 225px;
