@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { InboxOutlined, SelectOutlined } from '@ant-design/icons';
 import { Col, message, Modal, Row, Upload } from 'antd';
 import type { RcFile } from 'antd/es/upload';

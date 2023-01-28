@@ -1,4 +1,3 @@
-import React from 'react';
 import { Modal, Tabs } from 'antd';
 import { AssetManagerProps } from './types';
 import { generateTabs } from './helpers';

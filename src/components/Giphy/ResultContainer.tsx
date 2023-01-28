@@ -1,10 +1,10 @@
-import React, { ElementType, useState } from 'react';
+import { ElementType, useState } from 'react';
 import { GiphyFetch } from '@giphy/js-fetch-api';
 import ResizeObserver from 'react-resize-observer';
 import { Carousel, Grid } from '@giphy/react-components';
 import { GalleryType } from '../Gallery/types';
 
-const giphyFetch = new GiphyFetch('sXpGFDGZs0Dv1mmNFvYaGUvYwKX0PWIh');
+const giphyFetch = new GiphyFetch(process.env.REACT_APP_GIPHY_API_KEY ?? '');
 
 const ResultContainer = ({
   trending,
